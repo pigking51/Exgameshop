@@ -31,7 +31,12 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/user/login"),
                                 new AntPathRequestMatcher("/user/signup"),
-                                new AntPathRequestMatcher("/login")
+                                // ↑ WAS까지 가서 통과해야되는 것들
+                                new AntPathRequestMatcher("/login"),
+                                new AntPathRequestMatcher("/gameshop/**"),
+                                new AntPathRequestMatcher("/css/**"),
+                                new AntPathRequestMatcher("/js/**")
+                                // ↑ TOMCAT까지 가서 통과해야되는 것들
                         ).permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form->form.loginPage("/login").defaultSuccessUrl("/articles"))

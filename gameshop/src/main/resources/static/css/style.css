@@ -1,0 +1,150 @@
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, GmarketSansMedium;
+  text-decoration: none;
+  color: inherit;
+}
+/* .body {
+  font-size: 16px;
+} */
+.container {
+  width: 70%;
+  /* height: 100vh; 자리잡는 용도라 지울 예정 */
+  /* pc베이스로 만들때는 여백없으면 매우 이상하기때문에
+        흔히 width가 7~80%정도만 쓰고 나머지를 비워둔다고 함 */
+  /* 모바일(앱x)의 경우에는 90%까지만 씀(화면이 작으니까)
+     → 앱은 전체 다 씀 */
+  margin: 0 auto;
+  border: 1px solid #333333;
+}
+.title {
+  width: 100%;
+  height: 150px;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem; /* font-size의 기본 크기는 16px임 */
+  color: dodgerblue;
+
+  /* rem : root(html태그, body 아님!!!)의 폰트사이즈 대비 비율
+        1rem : 16px
+        2rem : 32px
+        0.5rem : 8px
+     em : 부모의 폰트사이즈 대비 비율
+    만약 root는 16px 이지만 부모가 20px이라면,
+        1em : 20px
+        2em : 40px
+        0.5em : 10px
+    → rem이 훨씬 단순해서 rem으로 쓰는 것을 추천 */
+}
+.menu {
+  width: 100%;
+  /* height: 50px; */
+  background-color: dodgerblue;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.content {
+  width: 100%;
+  /* height: 500px; */
+  background-color: khaki;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.footer {
+  width: 100%;
+  height: 100px;
+  background-color: lightgray;
+  padding: 20px;
+}
+.menu > div {
+  width: 120px;
+  height: 50px;
+  text-align: center;
+  line-height: 45px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+.menu > div:hover {
+  color: dodgerblue;
+  background-color: white;
+  cursor: pointer;
+}
+.game {
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  padding-bottom: 20px;
+}
+.game:hover {
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.4);
+  transform: translate(0px, -5px);
+  filter: brightness(120%);
+  cursor: pointer;
+}
+.image {
+  width: 100%;
+}
+.content p {
+  margin: 0 0 5px 10px;
+}
+.product {
+  width: 100%;
+  /* height: 500px; */
+  background-color: khaki;
+  padding: 20px;
+}
+.product p {
+  margin: 10px 20px;
+}
+.login {
+  height: 300px;
+  background-color: khaki;
+  display: flex;
+  align-items: center;
+}
+.login-box {
+  width: 450px;
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 20px 0;
+  margin-left: 30px;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
+  border-radius: 5px;
+}
+.loginBtn {
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.loginBtn:hover {
+  background-color: lightblue;
+  color: dodgerblue;
+}

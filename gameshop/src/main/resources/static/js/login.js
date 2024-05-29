@@ -99,13 +99,6 @@ document.querySelector(".register").addEventListener("click", () => {
     .post(urlsignUp, data, { withCredentials: true }) // url 옆에 전송할 객체 넣음
     .then((response) => {
       console.log("데이터 :", response);
-      if (data.userId == response.data.userId) {
-        console.log("중복된 아이디입니다.");
-      } else if (data.userEmail == response.data.userEmail) {
-        console.log("이미 가입한 이력이 있습니다.");
-      } else if (data.userName == response.data.userName) {
-        console.log("이미 가입한 이력이 있습니다.");
-      }
       if (response.status == 201) {
         console.log("회원가입 완료");
         document.querySelector("#userId2").value = null;

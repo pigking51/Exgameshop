@@ -1,6 +1,7 @@
 package dw.gameshop.controller;
 
 import dw.gameshop.dto.UserDto;
+import dw.gameshop.model.User;
 import dw.gameshop.service.UserDetailService;
 import dw.gameshop.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +17,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -29,6 +32,12 @@ public class UserController {
         this.userDetailService = userDetailService;
         this.authenticationManager = authenticationManager;
         this.httpServletRequest = httpServletRequest;
+    }
+
+    @GetMapping("show")
+    public ResponseEntity<List<User>> getAllUsers(){
+        return new ResponseEntity<>(userService.getAllUsers(),
+                HttpStatus.OK);
     }
 
     @PostMapping("signup")

@@ -151,6 +151,28 @@
   background-color: lightblue;
   color: dodgerblue;
 }
+.logoutBtn:hover {
+  background-color: lightblue;
+  color: dodgerblue;
+}
+
+.purchaseBtn:hover {
+  background-color: lightblue;
+  color: dodgerblue;
+}
+
+.purchaseBtn {
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 50px;
+}
 .logoutBtn {
   width: 100px;
   height: 40px;
@@ -222,6 +244,41 @@
   font-size: 1.5rem;
   border-radius: 5px;
 }
+.low-box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  align-items: center;
+}
+.cart-btn {
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 5px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.cart-btn:hover {
+  background-color: #888888;
+  color: dodgerblue;
+}
+.gageBar {
+  width: 150px;
+  height: 30px;
+  background-color: yellow;
+}
+.userSum {
+  width: 0px;
+  height: 100%;
+  background-color: blue;
+}
+
+/* css 하면서 hidden은 반드시 제일 아래에 둘 것!!!
+    이외에도 몇가지 더 있는데 지금은 이거밖에 모름 -240530기준 */
 .hidden {
   display: none;
 }

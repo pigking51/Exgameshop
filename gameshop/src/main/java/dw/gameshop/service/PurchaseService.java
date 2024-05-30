@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -25,6 +26,27 @@ public class PurchaseService {
         //구매확정 바로 직전, 현재시간을 저장함
         purchase.setPurchaseTime(LocalDateTime.now());
         return purchaseRepository.save(purchase);
+    }
+
+//    public List<Purchase> savePurchaseList(List<Purchase> purchaseList) {
+//        //구매확정 바로 직전, 현재시간을 저장함
+//        purchaseList.forEach((e) ->
+//                e.setPurchaseTime(LocalDateTime.now())
+//        );
+//        return purchaseRepository.saveAll(purchaseList);
+//
+////        purchase.setPurchaseTime(LocalDateTime.now());
+////        return purchaseRepository.save(purchaseList);
+//    }
+    public List<Purchase> savePurchaseList(List<Purchase> purchaseList) {
+        List<Purchase> savedPurchaseList = purchaseList.stream()
+                .map((purchase -> {
+                    purchase.setPurchaseTime(LocalDateTime.now());
+                    return purchaseRepository.save(purchase);
+                }))
+                .collect(Collectors.toList());
+        return savedPurchaseList;
+
     }
 
     public List<Purchase> getAllPurchases() {

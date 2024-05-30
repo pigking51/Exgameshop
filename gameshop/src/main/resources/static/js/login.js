@@ -1,6 +1,8 @@
 const urlLogin = "http://localhost:8080/user/login";
 const urlLogout = "http://localhost:8080/user/logout";
 const urlsignUp = "http://localhost:8080/user/signup";
+const url = "http://localhost:8080/products";
+const urlShow = "http://localhost:8080/user/show";
 
 let userId = "";
 let password = "";
@@ -130,6 +132,25 @@ function sessionCurrent() {
     .catch((error) => {
       console.log("에러 발생: ", error);
     });
+}
+
+axios
+  .get(urlShow)
+  .then((response) => {
+    console.log("응답 Response :", response);
+    console.log(response.data);
+    displayUserSum(response.data);
+  })
+  .catch((error) => {
+    console.log("에러 발생 :", error);
+  });
+
+function displayUserSum(gameData) {
+  const userSum = document.querySelector(".userSum");
+  userSum.style.width = `${gameData.length}px`;
+  const uma = document.createElement("p");
+  uma.textContent = `현재 회원 수 : ${gameData.length}명!`;
+  userSum.appendChild(uma);
 }
 
 // js 파일이 로드될 때 호출됨

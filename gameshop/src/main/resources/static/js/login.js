@@ -30,12 +30,7 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
     .post(urlLogin, data, { withCredentials: true }) // url 옆에 전송할 객체 넣음
     .then((response) => {
       console.log("데이터 :", response);
-      if (response.status == 200) {
-        document.querySelector(".login-box").classList.add("hidden");
-        document.querySelector(".user-box").classList.remove("hidden");
-        document.querySelector(".user-box p").textContent =
-          response.data + "님 환영합니다.";
-      }
+      sessionCurrent();
     })
     .catch((error) => {
       console.log("에러발생 : ", error);
@@ -90,6 +85,11 @@ document.querySelector("#userEmail").addEventListener("change", (e) => {
   userEmail = e.target.value;
 });
 
+const upUserId = document.querySelector("#userId2");
+const upUserPW = document.querySelector("#password2");
+const upUserName = document.querySelector("#userName");
+const upUserEM = document.querySelector("#userEmail");
+
 document.querySelector(".register").addEventListener("click", () => {
   const data = {
     userId: userId,
@@ -102,11 +102,11 @@ document.querySelector(".register").addEventListener("click", () => {
     .then((response) => {
       console.log("데이터 :", response);
       if (response.status == 201) {
-        console.log("회원가입 완료");
-        document.querySelector("#userId2").value = null;
-        document.querySelector("#password2").value = null;
-        document.querySelector("#userName").value = null;
-        document.querySelector("#userEmail").value = null;
+        alert("회원가입 완료");
+        document.querySelector("#userId2").value = "";
+        document.querySelector("#password2").value = "";
+        document.querySelector("#userName").value = "";
+        document.querySelector("#userEmail").value = "";
         document.querySelector(".signUp-box").classList.add("hidden");
         document.querySelector(".login-box").classList.remove("hidden");
       }
@@ -123,10 +123,12 @@ function sessionCurrent() {
       console.log("데이터: ", response);
       if (response.status == 200) {
         console.log("세션 유지");
-        document.querySelector(".login-box").classList.add("hidden");
-        document.querySelector(".user-box").classList.remove("hidden");
-        document.querySelector(".user-box p").textContent =
-          response.data + "님 환영합니다.";
+        if (response.status == 200) {
+          document.querySelector(".login-box").classList.add("hidden");
+          document.querySelector(".user-box").classList.remove("hidden");
+          document.querySelector(".user-box p").textContent =
+            response.data.userId + "님 환영합니다.";
+        }
       }
     })
     .catch((error) => {
@@ -147,10 +149,11 @@ axios
 
 function displayUserSum(gameData) {
   const userSum = document.querySelector(".userSum");
+  const gageBar = document.querySelector(".gageBar");
   userSum.style.width = `${gameData.length}px`;
   const uma = document.createElement("p");
   uma.textContent = `현재 회원 수 : ${gameData.length}명!`;
-  userSum.appendChild(uma);
+  gageBar.appendChild(uma);
 }
 
 // js 파일이 로드될 때 호출됨

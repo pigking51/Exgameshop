@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -19,6 +20,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
     @Autowired
     private UserDetailService userDetailService;
@@ -28,12 +30,12 @@ public class SecurityConfig {
         return http
                 .authorizeRequests(auth -> auth
                         .requestMatchers(
-                                new AntPathRequestMatcher("/api/products/**"),
                                 new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/user/login"),
                                 new AntPathRequestMatcher("/user/signup"),
-                                // ↑ WAS까지 가서 통과해야되는 것들
                                 new AntPathRequestMatcher("/login"),
+                                new AntPathRequestMatcher("/show"),
+                                // ↑ WAS까지 가서 통과해야되는 것들
                                 new AntPathRequestMatcher("/gameshop/**"),
                                 new AntPathRequestMatcher("/css/**"),
                                 new AntPathRequestMatcher("/js/**")

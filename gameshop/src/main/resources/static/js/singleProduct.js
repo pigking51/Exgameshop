@@ -57,20 +57,42 @@ function displaySingleProduct(data) {
   game.appendChild(img);
   game.appendChild(lowBox);
   product.appendChild(game);
+
+  document.querySelector(".cart-btn").addEventListener("click", () => {
+    sessionCurrent(data);
+    if (confirm("구매완료 장바구니로 가시겠습니까?")) {
+      window.location.href = "http://localhost:8080/gameshop/cart.html";
+    }
+  });
 }
 
-document.querySelector(".cart-btn").addEventListener("click", () => {
-  alert("일단 클릭!!");
-  sessionCurrent();
-});
-
-function sessionCurrent() {
+function sessionCurrent(data) {
   axios
     .get("http://localhost:8080/user/current", { widthCredentials: true })
     .then((response) => {
       console.log("데이터: ", response.data);
+      if (response.status == 200) {
+        const userId = response.data.userId;
+        let cartItems = JSON.parse(localStorage.getItem(userId));
+        if (!cartItems) {
+          cartItems = [];
+        }
+        cartItems.push(data);
+        localStorage.setItem(userId, JSON.stringify(cartItems));
+      }
     })
     .catch((error) => {
       console.log("오류 발생: ", error);
+      alert("로그인해주세요!!");
     });
 }
+
+//  <로컬 스토리지 사용법>
+//  - 읽기
+// localStorage.getItem(키);
+//  - 쓰기
+// localStorage.getItem(키, 값);
+//  - JSON 형태로 저장하기
+// localStorage.setItem(키, JSON.stringigy(값));
+//  - JSON을 객체형태로 변환해서 읽기
+// JSON.parse(localStorage.getItem(키));

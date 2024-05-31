@@ -39,13 +39,12 @@ public class PurchaseService {
 ////        return purchaseRepository.save(purchaseList);
 //    }
     public List<Purchase> savePurchaseList(List<Purchase> purchaseList) {
-        List<Purchase> savedPurchaseList = purchaseList.stream()
+        return purchaseList.stream()
                 .map((purchase -> {
                     purchase.setPurchaseTime(LocalDateTime.now());
                     return purchaseRepository.save(purchase);
                 }))
                 .collect(Collectors.toList());
-        return savedPurchaseList;
 
     }
 

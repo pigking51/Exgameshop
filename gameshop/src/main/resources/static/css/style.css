@@ -156,12 +156,8 @@
   color: dodgerblue;
 }
 
-.purchaseBtn:hover {
-  background-color: lightblue;
-  color: dodgerblue;
-}
-
 .purchaseBtn {
+  display: inline-block;
   width: 100px;
   height: 40px;
   background-color: dodgerblue;
@@ -172,6 +168,10 @@
   border-radius: 5px;
   cursor: pointer;
   margin-top: 50px;
+}
+.purchaseBtn:hover {
+  background-color: lightblue;
+  color: dodgerblue;
 }
 .logoutBtn {
   width: 100px;
@@ -275,6 +275,36 @@
   width: 0px;
   height: 100%;
   background-color: blue;
+}
+
+.cart {
+  width: 100%;
+  background-color: khaki;
+  padding: 20px;
+}
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
+}
+.cart-table td {
+  text-align: center;
+}
+thead {
+  color: #27ae60;
+  height: 50px;
+}
+.tr:nth-child(even) {
+  background-color: #eaeaed;
+  /* 실제로 표 꾸밀때 이 색상 많이사용한다고 함 */
+}
+.imgtd {
+  width: 200px;
+}
+.totalPrice {
+  display: inline-block;
 }
 
 /* css 하면서 hidden은 반드시 제일 아래에 둘 것!!!

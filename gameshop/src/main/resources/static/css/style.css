@@ -312,3 +312,19 @@ thead {
 .hidden {
   display: none;
 }
+
+.deleteBtn {
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.delete:hover {
+  background-color: lightblue;
+  color: dodgerblue;
+}

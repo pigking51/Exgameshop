@@ -54,10 +54,13 @@ function displayCart(games) {
     const genre = document.createElement("td");
     const price = document.createElement("td");
     const img = document.createElement("img");
+    const cancel = document.createElement("td");
+    const cBtn = document.createElement("div");
 
     // 클래스 이름 생성
     imgtd.classList.add("imgtd");
     img.classList.add("image");
+    cBtn.classList.add("deleteBtn");
 
     // 태그 속성 추가
     img.src = data.image;
@@ -72,13 +75,37 @@ function displayCart(games) {
     tr.appendChild(title);
     tr.appendChild(genre);
     tr.appendChild(price);
+    cancel.appendChild(cBtn);
+    tr.appendChild(cancel);
     tbody.appendChild(tr);
 
     totalPrice = totalPrice + data.price;
   });
   document.querySelector(".totalPrice").textContent =
     "총 " + totalPrice + "원 입니다.";
+
+  // 삭제버튼 만들기
+
+  document.querySelectorAll(".deleteBtn").addEventListener("click", (e) => {
+    deleteIndex(games);
+    console.log("삭제완료");
+  });
 }
 
+function deleteIndex(games) {
+  axios
+    .get("http://localhost:8080/user/current", { withCredentials: true })
+    .then((response) => {
+      console.log("데이터:", response.data);
+      if (response.status == 200) {
+        const userId = response.data.userId;
+        let cartItems = JSON.parse(localStorage.getItem(userId));
+        games.forEach((index) => {});
+      }
+    })
+    .catch((error) => {
+      console.log("오류발생:", error);
+    });
+}
 // 페이지 로딩시에 즉시 세션여부 확인
 sessionCurrent();

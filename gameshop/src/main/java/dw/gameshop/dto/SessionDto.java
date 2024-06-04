@@ -15,6 +15,7 @@ import java.util.Collections;
 @Setter
 public class SessionDto {
     private String userId;
+//    private String userName;
     private Collection<? extends GrantedAuthority> authority;
 
 }

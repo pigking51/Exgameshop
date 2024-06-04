@@ -19,6 +19,7 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/user", method=RequestMethod.GET)
@@ -81,9 +82,15 @@ public class UserController {
         if (authentication == null || !authentication.isAuthenticated()) {
             throw new IllegalStateException("User is not authenticated");
         }
+//        UserDto userDto = new UserDto();
         SessionDto sessionDto = new SessionDto();
         sessionDto.setUserId(authentication.getName());
+//        sessionDto.setUserName(userService.getUserName(userDto));
         sessionDto.setAuthority(authentication.getAuthorities());
         return sessionDto;
     }
 }
+//        sessionDto.setUserName(userService.getAllUsers().stream().filter(
+//                (e) -> e.getUserId().equals(authentication.getName())
+//                        .filter()
+//        ).toList());

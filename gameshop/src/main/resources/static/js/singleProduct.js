@@ -62,6 +62,8 @@ function displaySingleProduct(data) {
     sessionCurrent(data);
     if (confirm("구매완료 장바구니로 가시겠습니까?")) {
       window.location.href = "http://localhost:8080/gameshop/cart.html";
+    } else {
+      window.location.href = "http://localhost:8080/gameshop/index.html";
     }
   });
 }

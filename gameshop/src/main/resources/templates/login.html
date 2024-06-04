@@ -3,23 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <script src="
-https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js
-"></script>
-    <!--위에서부터 실행되는것이기에 코드보다 위에 존재해야됨 -->
+    <link rel="stylesheet" href="https://googleapis.com" />
+    <title>Game Archive</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="title">
-        <h1>GAME SHOP</h1>
+        <h3>
+          <i><span style="color: #17263f">Game</span> Archive</i>
+        </h3>
       </div>
       <div class="menu">
         <div><a href="index.html">HOME</a></div>
@@ -29,37 +29,35 @@ https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js
       </div>
       <div class="login">
         <div class="login-box">
-          <label for="userId">User ID</label>
+          <label>User ID</label>
           <input type="text" id="userId" />
-          <label for="password">password</label>
+          <label>password</label>
           <input type="password" id="password" />
           <div></div>
           <div class="loginBtn">Login</div>
+          <div class="signupBtn">Sign Up</div>
           <button onclick="sessionCurrent()">세션확인</button>
-          <div class="signUpBtn goToSignUp">signUp</div>
         </div>
         <div class="user-box hidden">
           <p></p>
           <div class="logoutBtn">Logout</div>
         </div>
-        <div class="signUp-box hidden">
-          <label for="userId2">User ID</label>
-          <input type="text" id="userId2" />
-          <label>password</label>
-          <input type="password" id="password2" />
-          <label for="userName">User Name</label>
-          <input type="text" id="userName" />
-          <label for="userEmail">User Email</label>
-          <input type="text" id="userEmail" />
-          <div class="prevBtn">prev</div>
-          <div class="signUpBtn register">signUp</div>
+        <div class="signup-box hidden">
+          <label>User Id</label>
+          <input type="text" id="signupUserId" />
+          <label>Password</label>
+          <input type="password" id="signupPassword" />
+          <label>User Name</label>
+          <input type="text" id="signupUserName" />
+          <label>User Email</label>
+          <input type="text" id="signupUserEmail" />
+          <!-- ↓ 수정한 부분 -->
+          <button class="signup">회원가입</button>
+          <div></div>
         </div>
       </div>
       <div class="footer">
         <h3>FOOTER</h3>
-        <div class="gageBar">
-          <div class="userSum"></div>
-        </div>
       </div>
     </div>
     <script src="/js/login.js"></script>

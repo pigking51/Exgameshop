@@ -202,7 +202,24 @@
   background-color: lightblue;
   color: dodgerblue;
 }
-
+/* 이게 회원가입버튼 */
+.signup {
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 5px;
+  /* margin-left: 8px; */
+  cursor: pointer;
+}
+.signup:hover {
+  background-color: lightblue;
+  color: dodgerblue;
+}
+/*  */
 .prevBtn {
   width: 100px;
   height: 40px;
@@ -307,12 +324,6 @@ thead {
   display: inline-block;
 }
 
-/* css 하면서 hidden은 반드시 제일 아래에 둘 것!!!
-    이외에도 몇가지 더 있는데 지금은 이거밖에 모름 -240530기준 */
-.hidden {
-  display: none;
-}
-
 .deleteBtn {
   width: 100px;
   height: 40px;
@@ -324,7 +335,13 @@ thead {
   border-radius: 5px;
   cursor: pointer;
 }
-.delete:hover {
+.deleteBtn:hover {
   background-color: lightblue;
   color: dodgerblue;
+}
+
+/* css 하면서 hidden은 반드시 제일 아래에 둘 것!!!
+    이외에도 몇가지 더 있는데 지금은 이거밖에 모름 -240530기준 */
+.hidden {
+  display: none;
 }

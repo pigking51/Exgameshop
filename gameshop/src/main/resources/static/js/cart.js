@@ -46,7 +46,8 @@ function sessionCurrent() {
 function displayCart(games) {
   const tbody = document.querySelector(".cart-body");
   let totalPrice = 0;
-  games.forEach((data) => {
+
+  games.forEach((data, index) => {
     // 태그 요소 생성
     const tr = document.createElement("tr");
     const imgtd = document.createElement("td");
@@ -79,20 +80,24 @@ function displayCart(games) {
     tr.appendChild(cancel);
     tbody.appendChild(tr);
 
+    cBtn.style.margin = `0 auto`;
+    cBtn.textContent = `삭제`;
+
+    cBtn.addEventListener("click", () => {
+      deleteIndex(index);
+      console.log("삭제완료");
+    });
+
     totalPrice = totalPrice + data.price;
   });
+
   document.querySelector(".totalPrice").textContent =
     "총 " + totalPrice + "원 입니다.";
 
   // 삭제버튼 만들기
-
-  document.querySelectorAll(".deleteBtn").addEventListener("click", (e) => {
-    deleteIndex(games);
-    console.log("삭제완료");
-  });
 }
 
-function deleteIndex(games) {
+function deleteIndex(Index) {
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
     .then((response) => {
@@ -100,7 +105,12 @@ function deleteIndex(games) {
       if (response.status == 200) {
         const userId = response.data.userId;
         let cartItems = JSON.parse(localStorage.getItem(userId));
-        games.forEach((index) => {});
+        if (cartItems[Index]) {
+          cartItems.splice(Index, 1);
+          alert("작동되나 확인!!!");
+        }
+        window.location.reload();
+        localStorage.setItem(userId, JSON.stringify(cartItems));
       }
     })
     .catch((error) => {
